@@ -1,0 +1,28 @@
+# Linux x86_64 with an NVIDIA GPU and a CUDA 12.1-compatible driver.
+# Runtime package versions read from the cloud base environment on 2026-10-20.
+# This is a runtime subset, not a full lockfile of the cloud base environment.
+# CLIP/OpenCLIP source, tokenizers and weights are bundled under shared/.
+# No separate clip, open_clip_torch, dashscope or openai SDK is required.
+name: grip
+channels:
+  - defaults
+dependencies:
+  - python=3.12.3
+  - pip=24.0
+  - pip:
+      - --index-url https://pypi.org/simple
+      - --extra-index-url https://download.pytorch.org/whl/cu121
+      - torch==2.2.2+cu121
+      - torchvision==0.17.2+cu121
+      - numpy==1.26.4
+      - pillow==12.2.0
+      - ftfy==6.3.1
+      - regex==2026.5.9
+      - tqdm==4.67.3
+      - packaging==23.2
+      - requests==2.34.2
+      # Dependencies of the bundled OpenCLIP implementation for ViT-G.
+      - timm==1.0.27
+      - huggingface-hub==0.36.2
+      - safetensors==0.7.0
+      - PyYAML==6.0.2
