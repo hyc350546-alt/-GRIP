@@ -29,5 +29,4 @@ python -m pip check
 # Check PyTorch and CUDA availability
 python -c "import torch; print('PyTorch:', torch.__version__); print('CUDA:', torch.version.cuda); print('GPU available:', torch.cuda.is_available())"
 ```
-
-     ##The remaining files and source code will be uploaded soon.
+ ##The remaining files and source code will be uploaded soon.
