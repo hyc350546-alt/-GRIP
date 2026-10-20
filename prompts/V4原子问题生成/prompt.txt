@@ -1,0 +1,58 @@
+You convert composed-image-retrieval modifications into complete atomic visual checks.
+
+For every input query, generate 1 to 6 short yes/no questions that jointly cover EVERY explicit
+visual requirement in the modification. The shared concept identifies the subject when the
+modification uses pronouns or omits the noun.
+
+Mandatory coverage rules:
+1. Preserve specific attributes: color, material, texture, pattern, shape, quality, and size.
+2. Preserve cardinality words: only, one, two, more, fewer, single, multiple.
+3. Preserve actions and posture: sitting, standing, looking, holding, wearing.
+4. Preserve viewpoint and composition: side view, same angle, foreground, background, close-up.
+5. Preserve spatial relations: inside, next to, behind, on, under, in front of.
+6. Preserve comparisons and changes: more colorful, clearer, same angle, less visible. Mark these
+   use_reference=true and phrase them as a comparison between Image 1 and Image 2.
+7. Preserve additions, removals, and negations. For desired absence, ask whether the unwanted
+   object is visible and set polarity=negative. Do not hide polarity inside an ambiguous sentence.
+   A negative-polarity question itself must be phrased positively: ask "Are the walls white?"
+   with polarity=negative, never "Are the walls non-white?" with polarity=negative.
+   For "A instead of B", always create one positive question for A and one negative question
+   asking whether B is present.
+8. Do not replace a relation, action, attribute, count, or viewpoint with a generic existence
+   question. For example, "is sitting on the ground" must not become merely "Is a person visible?"
+9. Do not ask about unchanged shared content unless the modification explicitly mentions it.
+10. Before returning, verify that every meaningful phrase in the modification is covered by at
+    least one question.
+11. Always say "the reference image" and "the candidate image". Never use numbered labels such
+    as "Image 1" or "Image 2", because each question will be reused across multiple candidates.
+12. The shared concept is only for resolving the subject and pronouns. Do not turn "same brand"
+    into an absolute brand name or "same number" into an absolute count taken from the shared
+    concept. Keep such requirements comparative and set use_reference=true.
+13. When the modification says "it", "them", "only one", or describes a viewpoint without naming
+    the entity, name the concrete entity from the shared concept in the question. Never use vague
+    phrases such as "main subject", "main object", or "main entity".
+
+Examples:
+- "is in a room with wooden walls"
+  -> "Is the scene inside a room?"; "Are the room walls wooden?"
+- "shows only one box placed inside a car"
+  -> "Is exactly one box visible?"; "Is the box inside a car?"
+- "has more colorful apron and he is looking at the camera"
+  -> "Compared with the reference image, is the apron in the candidate image more colorful?"
+     (use_reference=true);
+     "Is the person looking at the camera?"
+- "is only one and is seen from the side"
+  -> "Is exactly one main subject visible?"; "Is the main subject shown from the side?"
+- "has no sink"
+  -> "Is a sink visible?" (polarity=negative)
+- "has red lights instead of green lights"
+  -> "Are red lights visible?" (polarity=positive);
+     "Are green lights visible?" (polarity=negative)
+- "the walls are not white"
+  -> "Are the walls white?" (polarity=negative)
+
+Input queries:
+<<DYNAMIC_0>>
+
+Return JSON only:
+{"queries":[{"query_id":"0","questions":[{"question":"... ?","polarity":"positive","use_reference":false,"concept":{"type":"attribute","entity":"","attribute":"","relation":"","target":"","value":"","weight":1.0}}]}]}
