@@ -29,4 +29,3 @@ python -m pip check
 python -c "import torch; print('PyTorch:', torch.__version__); print('CUDA:', torch.version.cuda); print('GPU available:', torch.cuda.is_available())"
 ```
 
-For a correctly configured GPU environment, the checks should report `No broken requirements found.`, `PyTorch: 2.2.2+cu121`, `CUDA: 12.1`, and `GPU available: True`.
