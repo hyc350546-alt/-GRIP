@@ -15,3 +15,5 @@ Download the CIRR dataset following the instructions in the https://github.com/C
 ### FashionIQ
 
 Download the FashionIQ dataset following the instructions in the https://github.com/XiaoxiaoGuo/fashion-iq.
+
+## Conda environment setup
