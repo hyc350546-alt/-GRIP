@@ -6,12 +6,12 @@ Official PyTorch implementation of GRIP: From Generation to Grounding: Real-Imag
 
 ### CIRCO
 
-Download the CIRCO dataset following the instructions in the [official repository](https://github.com/miccunifi/CIRCO).
+Download the CIRCO dataset following the instructions in the https://github.com/miccunifi/CIRCO.
 
 ### CIRR
 
-Download the CIRR dataset following the instructions in the [official repository](https://github.com/Cuberick-Orion/CIRR).
+Download the CIRR dataset following the instructions in the https://github.com/Cuberick-Orion/CIRR.
 
 ### FashionIQ
 
-Download the FashionIQ dataset following the instructions in the [official repository](https://github.com/XiaoxiaoGuo/fashion-iq).
+Download the FashionIQ dataset following the instructions in the https://github.com/XiaoxiaoGuo/fashion-iq.
