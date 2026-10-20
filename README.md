@@ -1,6 +1,7 @@
 # GRIP
 
-Official PyTorch implementation of GRIP: From Generation to Grounding: Real-Image Proxies for Zero-Shot Composed Image Retrieval.
+Official PyTorch implementation of GRIP: 
+From Generation to Grounding: Real-Image Proxies for Zero-Shot Composed Image Retrieval.
 
 ## Data preparation
 
