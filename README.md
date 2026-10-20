@@ -13,37 +13,20 @@ Download the CIRR dataset following the instructions in the https://github.com/C
 Download the FashionIQ dataset following the instructions in the https://github.com/XiaoxiaoGuo/fashion-iq.
 ## Conda environment setup
 
-The CIRCO pipeline uses Python 3.12.3, PyTorch 2.2.2, and
-torchvision 0.17.2 with CUDA 12.1. GPU execution requires a Linux
-system with an NVIDIA GPU and a compatible driver.
-
-### Create the environment
+The CIRCO pipeline uses Python 3.12.3, PyTorch 2.2.2, and torchvision 0.17.2 with CUDA 12.1. GPU execution requires a Linux system with an NVIDIA GPU and a compatible driver.
 
 Run the following commands from the repository root:
 
 ```bash
+# Create and activate the environment
 conda env create -f environment.yml
 conda activate grip
-```
 
-### Verify the installation
-
-Check the installed dependencies:
-
-```bash
+# Check installed dependencies
 python -m pip check
-```
 
-Check PyTorch and CUDA availability:
-
-```bash
+# Check PyTorch and CUDA availability
 python -c "import torch; print('PyTorch:', torch.__version__); print('CUDA:', torch.version.cuda); print('GPU available:', torch.cuda.is_available())"
 ```
 
-For a correctly configured GPU environment, the expected output is:
-
-```text
-PyTorch: 2.2.2+cu121
-CUDA: 12.1
-GPU available: True
-```
+For a correctly configured GPU environment, the checks should report `No broken requirements found.`, `PyTorch: 2.2.2+cu121`, `CUDA: 12.1`, and `GPU available: True`.
